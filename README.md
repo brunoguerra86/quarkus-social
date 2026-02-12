@@ -51,6 +51,22 @@ If you want to learn more about building native executables, please consult http
 
 - RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
 
+## Postgres
+
+[Related guide section...](https://quarkus.io/guides/getting-started#the-postgresql-database)
+
+docker run --name quarkus-postgres \
+-e POSTGRES_DB=quarkus_social \
+-e POSTGRES_USER=quarkus \
+-e POSTGRES_PASSWORD=quarkus \
+-p 5432:5432 \
+-d postgres:16
+
+docker ps
+docker logs quarkus-postgres
+docker stop quarkus-postgres
+docker start quarkus-postgres
+
 ## Provided Code
 
 ### RESTEasy JAX-RS
