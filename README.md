@@ -52,7 +52,6 @@ If you want to learn more about building native executables, please consult http
 - RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
 
 ## Postgres
-
 Important: passwords exposed for educational purposes; a professional implementation should include a password management solution.
 
 docker run --name quarkus-postgres \
