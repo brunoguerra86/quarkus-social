@@ -53,7 +53,7 @@ If you want to learn more about building native executables, please consult http
 
 ## Postgres
 
-[Related guide section...](https://quarkus.io/guides/getting-started#the-postgresql-database)
+Important: passwords exposed for educational purposes; a professional implementation should include a password management solution.
 
 docker run --name quarkus-postgres \
 -e POSTGRES_DB=quarkus_social \
