@@ -51,6 +51,10 @@ If you want to learn more about building native executables, please consult http
 
 - RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
 
+## OpenAPI Documentation
+
+The OpenAPI documentation is available at http://localhost:8080/q/openapi.
+
 ## Postgres
 Important: passwords exposed for educational purposes; a professional implementation should include a password management solution.
 
