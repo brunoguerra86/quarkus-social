@@ -22,4 +22,9 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @PrePersist
+    public void prePersist() {
+        this.dateTime = LocalDateTime.now();
+    }
 }
