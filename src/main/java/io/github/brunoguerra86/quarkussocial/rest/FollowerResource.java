@@ -4,11 +4,15 @@ import io.github.brunoguerra86.quarkussocial.domain.model.Follower;
 import io.github.brunoguerra86.quarkussocial.domain.repository.FollowerRepository;
 import io.github.brunoguerra86.quarkussocial.domain.repository.UserRepository;
 import io.github.brunoguerra86.quarkussocial.rest.dto.FollowerRequest;
+import io.github.brunoguerra86.quarkussocial.rest.dto.FollowerResponse;
+import io.github.brunoguerra86.quarkussocial.rest.dto.FollowersPerUserResponse;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import java.util.stream.Collectors;
 
 @Path("/users/{userId}/followers")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -50,5 +54,25 @@ public class FollowerResource {
         }
 
         return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @GET
+    public Response listFollowers(@PathParam("userId") Long userId){
+
+        var userToFollow = userRepository.findById(userId);
+        if(userToFollow == null){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        var list = followerRepository.findFollowersByUserId(userId);
+        FollowersPerUserResponse responseObject = new FollowersPerUserResponse();
+        responseObject.setFollowersCount(list.size());
+
+        var followerList = list.stream()
+                .map(FollowerResponse::new)
+                .collect(Collectors.toList());
+
+        responseObject.setContent(followerList);
+        return Response.ok(responseObject).build();
     }
 }
